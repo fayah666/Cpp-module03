@@ -6,12 +6,18 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/04/29 13:10:27 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/04/29 13:27:56 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "ClapTrap.hpp"
+
+static void	printStats(const ClapTrap& ct)
+{
+	std::cout << ct.getName() << " HP: " << ct.getHitPoints()
+			<< " EP: " << ct.getEnergyPoints() << std::endl;
+}
 
 int main(void)
 {
@@ -22,10 +28,10 @@ int main(void)
 			<< " EP: " << alpha.getEnergyPoints() << std::endl;
 	std::cout << beta.getName() << " HP: " << beta.getHitPoints()
 			<< " EP: " << beta.getEnergyPoints() << std::endl;
-	alpha.setAttackDamage(6);
+	alpha.setAttackDamage(4);
 	beta.setAttackDamage(4);
 	std::cout << "\n--- Fight Start ---\n";
-	for (int turn = 1; turn <= 2; turn++)
+	for (int turn = 1; turn <= 5; turn++)
 	{
 		std::cout << "\n[TURN " << turn << "]\n";
 		if (alpha.getEnergyPoints() > 0 && alpha.getHitPoints() > 0)
@@ -43,9 +49,14 @@ int main(void)
 				alpha.takeDamage(beta.getAttackDamage());
 			}
 		}
+		printStats(alpha);
+		printStats(beta);
 		if (alpha.getHitPoints() <= 0 || beta.getHitPoints() <= 0)
 			break;
 	}
+	std::cout << "\n--- Final Stats ---\n";
+	printStats(alpha);
+	printStats(beta);
 	std::cout << "\n--- Copy Constructor Test ---\n";
 	ClapTrap clone(alpha);
 	std::cout << "Clone of " << alpha.getName()
@@ -58,8 +69,5 @@ int main(void)
 	alpha.setHitPoints(0);
 	alpha.attack("Ghost");
 	alpha.beRepaired(5);
-	std::cout << "\n--- Final Stats ---\n";
-	std::cout << alpha.getName() << " HP: " << alpha.getHitPoints() << std::endl;
-	std::cout << beta.getName() << " HP: " << beta.getHitPoints() << std::endl;
 	return 0;
 }

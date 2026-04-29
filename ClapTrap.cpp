@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:05:26 by hfandres          #+#    #+#             */
-/*   Updated: 2026/04/29 13:12:24 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/04/29 13:23:02 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,10 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 	std::cout << "Claptrap " << _name << " takes " << amount << " points of damage!" << std::endl;
 	_hitPoints -= amount;
 	if (_hitPoints <= 0)
+	{
 		_hitPoints = 0;
+		std::cout << COLOR_RED << "Ouch!" << COLOR_RESET << std::endl;
+	}
 }
 void	ClapTrap::beRepaired(unsigned int amount) {
 	std::cout << COLOR_YELLOW << _name << ":" << COLOR_RESET << std::endl;
