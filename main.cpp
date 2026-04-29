@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/04/29 13:27:56 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/04/29 13:34:40 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static void	printStats(const ClapTrap& ct)
 
 int main(void)
 {
-	ClapTrap alpha("Alpha");
+	ClapTrap alpha;
+	alpha.setName("Alpha");
 	ClapTrap beta("Beta");
 	std::cout << "\n--- Initial Stats ---\n";
 	std::cout << alpha.getName() << " HP: " << alpha.getHitPoints()
