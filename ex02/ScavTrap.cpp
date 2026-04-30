@@ -6,13 +6,14 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 18:07:11 by hfandres          #+#    #+#             */
-/*   Updated: 2026/04/30 10:56:54 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/04/30 10:48:43 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(void) : ClapTrap() {
+	ClapTrap::setName("Serena");
 	ClapTrap::setHitPoints(100);
 	ClapTrap::setEnergyPoints(50);
 	ClapTrap::setAttackDamage(20);
@@ -20,15 +21,12 @@ ScavTrap::ScavTrap(void) : ClapTrap() {
 }
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
-	ClapTrap::setHitPoints(100);
-	ClapTrap::setEnergyPoints(50);
-	ClapTrap::setAttackDamage(20);
 	std::cout << COLOR_RED << "I'm " << getName() << " not serena (ScavTrap)" << COLOR_RESET << std::endl;
 }
 
 ScavTrap::~ScavTrap(void) {
 	std::cout << COLOR_YELLOW << getName() << ":" << COLOR_RESET << std::endl;
-	std::cout << "Love is never dead(ScavTrap)" << std::endl;
+	std::cout << COLOR_GREEN <<"Love is never dead(ScavTrap)" << COLOR_GREEN << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other) {

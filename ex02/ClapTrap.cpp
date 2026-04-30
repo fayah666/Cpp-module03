@@ -6,14 +6,14 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:05:26 by hfandres          #+#    #+#             */
-/*   Updated: 2026/04/30 10:44:43 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/04/30 10:56:33 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(void) :
-	_hitPoints(100), _energyPoints(50), _attackDamage(20) {
+	_hitPoints(50), _energyPoints(20), _attackDamage(10) {
 	std::cout << COLOR_YELLOW << _name << ":" << COLOR_RESET << std::endl;
 	std::cout << COLOR_BLUE << "Spawning with style.(ClapTrap)" << COLOR_RESET << std::endl;
 }
