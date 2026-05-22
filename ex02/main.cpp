@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/04/30 11:05:12 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/05/22 17:57:44 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,9 @@ int main(void)
 	std::cout << "\n---Simulation start...---\n";
 	ClapTrap alpha;
 	alpha.setName("Alpha");
-	ScavTrap beta;
 	FragTrap omega("omega");
 	std::cout << "\n--- Initial Stats ---\n";
 	printStats(alpha);
-	printStats(beta);
 	printStats(omega);
 	std::cout << "\n--- Fight Start ---\n";
 	std::srand(std::time(0));
@@ -47,64 +45,54 @@ int main(void)
 		{
 			if (alpha.getEnergyPoints() > 0 && alpha.getHitPoints() > 0)
 			{
-				alpha.attack(beta.getName());
-				beta.takeDamage(alpha.getAttackDamage());
+				alpha.attack(omega.getName());
+				omega.takeDamage(alpha.getAttackDamage());
 			}
 		}
 		else
 		{
-			if (beta.getHitPoints() > 0)
+			if (omega.getHitPoints() > 0)
 			{
-				if (beta.getHitPoints() < 50 && beta.getEnergyPoints() > 0)
-					beta.guardGate();
-				if (beta.getHitPoints() < 30 && beta.getEnergyPoints() > 0)
-					beta.beRepaired(3);
-				else if (beta.getEnergyPoints() > 0)
+				if (omega.getHitPoints() < 30 && omega.getEnergyPoints() > 0)
+					omega.beRepaired(3);
+				else if (omega.getEnergyPoints() > 0)
 				{
-					beta.attack(alpha.getName());
-					alpha.takeDamage(beta.getAttackDamage());
+					omega.attack(alpha.getName());
+					alpha.takeDamage(omega.getAttackDamage());
 				}
 			}
 		}
 		printStats(alpha);
-		printStats(beta);
-		if (alpha.getHitPoints() <= 0 || beta.getHitPoints() <= 0)
+		printStats(omega);
+		if (alpha.getHitPoints() <= 0 || omega.getHitPoints() <= 0)
 			break;
 	}
 	if (omega.getHitPoints() > 0)
 	{
-		omega.guardGate();
 		omega.beRepaired(3);
 		omega.highFivesGuys();
 	}
 	std::cout << "\n--- Final Stats ---\n";
 	printStats(alpha);
-	printStats(beta);
-	std::cout << "\n--- ScavTrap Copy/Assign Test ---\n";
-	ScavTrap bof("bof");
-	ScavTrap delta(omega);
-	ScavTrap epsilon;
-	epsilon = bof;
-	printStats(bof);
-	printStats(delta);
-	printStats(epsilon);
+	printStats(omega);
+
 	std::cout << "\n--- Scope Destruction Test ---\n";
 	{
 		FragTrap temp("Temp");
 		printStats(temp);
 	}
 	std::cout << "\n--- Copy Constructor Test ---\n";
-	ClapTrap clone(alpha);
+	ClapTrap clone(omega);
 	std::cout << "Clone of " << alpha.getName()
 			<< " HP: " << clone.getHitPoints() << std::endl;
 	std::cout << "\n--- Assignment Operator Test ---\n";
-	clone = beta;
-	std::cout << "Clone now copied from " << beta.getName()
+	FragTrap omegaClone("OmegaClone");
+	clone = omegaClone;
+	std::cout << "Clone now copied from " << omegaClone.getName()
 			<< " HP: " << clone.getHitPoints() << std::endl;
 	std::cout << "\n--- Edge Case Test ---\n";
 	omega.setHitPoints(0);
 	omega.attack("Ghost");
-	omega.guardGate();
 	omega.highFivesGuys();
 	std::cout << "\n---Simulation end.---\n";
 	return 0;
