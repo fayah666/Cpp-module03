@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 18:07:11 by hfandres          #+#    #+#             */
-/*   Updated: 2026/04/30 10:48:43 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/05/22 18:05:11 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
 }
 
 ScavTrap::~ScavTrap(void) {
-	std::cout << COLOR_YELLOW << getName() << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << getName() << ": ";
 	std::cout << COLOR_GREEN <<"Love is never dead(ScavTrap)" << COLOR_GREEN << std::endl;
 }
 
@@ -40,7 +40,7 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other) {
 }
 
 void	ScavTrap::attack(const std::string& target) {
-	std::cout << COLOR_YELLOW << getName() << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << getName() << ": ";
 	std::cout << COLOR_BLUE << "Serena's hand!" << COLOR_RESET << std::endl;
 	setEnergyPoints(getEnergyPoints() - 1);
 	if (getEnergyPoints() <= 0 || getHitPoints() <= 0)
@@ -54,7 +54,7 @@ void	ScavTrap::attack(const std::string& target) {
 }
 
 void	ScavTrap::guardGate(void) {
-	std::cout << COLOR_YELLOW << getName() << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << getName() << ": ";
 	std::cout << COLOR_BLUE << "Entering Gate keeper mode." << COLOR_RESET << std::endl;
 	setEnergyPoints(getEnergyPoints() - 1);
 	if (getEnergyPoints() <= 0 || getHitPoints() <= 0)

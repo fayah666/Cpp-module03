@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:05:26 by hfandres          #+#    #+#             */
-/*   Updated: 2026/04/30 10:56:33 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/05/22 18:04:36 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 ClapTrap::ClapTrap(void) :
 	_hitPoints(50), _energyPoints(20), _attackDamage(10) {
-	std::cout << COLOR_YELLOW << _name << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_BLUE << "Spawning with style.(ClapTrap)" << COLOR_RESET << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << COLOR_YELLOW << _name << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_RED << "So this is how it ends(ClapTrap)" << COLOR_RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& name) :
 	_name(name), _hitPoints(100), _energyPoints(50), _attackDamage(20) {
-	std::cout << COLOR_YELLOW << _name << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_BLUE << "Showtime(ClapTrap)" << COLOR_RESET << std::endl;
 }
 
@@ -77,7 +77,7 @@ void	ClapTrap::setAttackDamage(const int attackDamage) {
 }
 
 void	ClapTrap::attack(const std::string& target) {
-	std::cout << COLOR_YELLOW << _name << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_BLUE << "Swing first, think later!" << COLOR_RESET << std::endl;
 	_energyPoints -= 1;
 	if (_energyPoints <= 0 || _hitPoints <= 0)
@@ -91,7 +91,7 @@ void	ClapTrap::attack(const std::string& target) {
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
-	std::cout << COLOR_YELLOW << _name << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_RED << "I’m fine. Totally fine. Probably." << COLOR_RESET << std::endl;
 	std::cout << "Claptrap " << _name << " takes " << amount << " points of damage!" << std::endl;
 	_hitPoints -= amount;
@@ -103,7 +103,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	std::cout << COLOR_YELLOW << _name << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_GREEN << "Magic fixes everything." << COLOR_RESET << std::endl;
 	_energyPoints -= 1;
 	if (_energyPoints <= 0 || _hitPoints <= 0)

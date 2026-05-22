@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 18:07:11 by hfandres          #+#    #+#             */
-/*   Updated: 2026/05/22 17:51:00 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/05/22 18:04:53 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
 }
 
 FragTrap::~FragTrap(void) {
-	std::cout << COLOR_YELLOW << getName() << ":" << COLOR_RESET << std::endl;
+	std::cout << COLOR_YELLOW << getName() << ": ";
 	std::cout << "Game over, man. Game over.(FragTrap)" << std::endl;
 }
 

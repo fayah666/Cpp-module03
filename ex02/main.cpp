@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/05/22 17:57:44 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/05/22 18:12:21 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@
 static void	printStats(const ClapTrap& ct)
 {
 	std::cout << ct.getName()
-			<< " HP:    " << ct.getHitPoints()
-			<< " EP:    " << ct.getEnergyPoints()
-			<< " Attack:"<< ct.getAttackDamage() <<std::endl;
+			<< " HP:     " << ct.getHitPoints()
+			<< " EP:     " << ct.getEnergyPoints()
+			<< " Attack: "<< ct.getAttackDamage() <<std::endl;
 }
 
 int main(void)
 {
-	int max_turn = 5;
+	int max_turn = 10;
 	std::cout << "\n---Simulation start...---\n";
 	ClapTrap alpha;
 	alpha.setName("Alpha");
@@ -41,25 +41,25 @@ int main(void)
 	{
 		int random_num = std::rand() % 1000 + 1;
 		std::cout << "\n[TURN " << turn << " " << random_num << "]\n";
-		if (random_num % 2 == 0)
-		{
-			if (alpha.getEnergyPoints() > 0 && alpha.getHitPoints() > 0)
-			{
-				alpha.attack(omega.getName());
-				omega.takeDamage(alpha.getAttackDamage());
-			}
-		}
-		else
+		if (random_num  % 5 == 0 && random_num  % 2 == 0)
 		{
 			if (omega.getHitPoints() > 0)
 			{
 				if (omega.getHitPoints() < 30 && omega.getEnergyPoints() > 0)
 					omega.beRepaired(3);
-				else if (omega.getEnergyPoints() > 0)
+				else if (omega.getEnergyPoints() > 0 && omega.getHitPoints() < 30)
 				{
 					omega.attack(alpha.getName());
 					alpha.takeDamage(omega.getAttackDamage());
 				}
+			}
+		}
+		else
+		{
+			if (alpha.getEnergyPoints() > 0 && alpha.getHitPoints() > 0)
+			{
+				alpha.attack(omega.getName());
+				omega.takeDamage(alpha.getAttackDamage());
 			}
 		}
 		printStats(alpha);
