@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/04/29 19:29:52 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/05/22 09:33:21 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int main(void)
 	ClapTrap alpha;
 	alpha.setName("Alpha");
 	ScavTrap beta;
+	beta.setName("Beta");
 	std::cout << "\n--- Initial Stats ---\n";
 	std::cout << alpha.getName() << " HP: " << alpha.getHitPoints()
 			<< " EP: " << alpha.getEnergyPoints() << std::endl;
