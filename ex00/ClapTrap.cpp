@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:05:26 by hfandres          #+#    #+#             */
-/*   Updated: 2026/05/22 09:25:34 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:37:36 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 ClapTrap::ClapTrap(void) :
 	_hitPoints(10), _energyPoints(10), _attackDamage(0) {
-	std::cout << COLOR_YELLOW << _name << ":" ;
+	std::cout << COLOR_YELLOW << _name << ": " ;
 	std::cout << COLOR_BLUE << "Spawning with style.(ClapTrap)" << COLOR_RESET << std::endl;
 }
+
 ClapTrap::~ClapTrap() {
 	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_RED << "So this is how it ends(ClapTrap)" << COLOR_RESET << std::endl;
 }
+
 ClapTrap::ClapTrap(const std::string& name) :
 	_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_BLUE << "Showtime(ClapTrap)" << COLOR_RESET << std::endl;
 }
+
 ClapTrap::ClapTrap(const ClapTrap& other) {
 	if (this != &other)
 		*this = other;
 }
+
 ClapTrap&	ClapTrap::operator=(const ClapTrap& other) {
 	if (this == &other)
 		return (*this);
@@ -39,30 +43,49 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& other) {
 	_attackDamage = other._attackDamage;
 	return (*this);
 }
+
+std::ostream& operator<<(std::ostream& os, ClapTrap& c)
+{
+	os << "{" << c.getName()
+		<< " : " << c.getHitPoints()
+		<< ", " << c.getEnergyPoints()
+		<< ", " << c.getAttackDamage()
+		<< "}";
+	return (os);
+}
+
 std::string	ClapTrap::getName(void) const {
 	return (this->_name);
 }
+
 int	ClapTrap::getHitPoints(void) const {
 	return (this->_hitPoints);
 }
+
 int	ClapTrap::getEnergyPoints(void) const {
 	return (this->_energyPoints);
 }
+
 int	ClapTrap::getAttackDamage(void) const {
 	return (this->_attackDamage);
 }
+
 void	ClapTrap::setName(const std::string& name) {
 	this->_name = name;
 }
+
 void	ClapTrap::setHitPoints(const int hitpoints) {
 	this->_hitPoints = hitpoints;
 }
+
 void	ClapTrap::setEnergyPoints(const int energyPoints) {
 	this->_energyPoints = energyPoints;
 }
+
 void	ClapTrap::setAttackDamage(const int attackDamage) {
 	this->_attackDamage = attackDamage;
 }
+
 void	ClapTrap::attack(const std::string& target) {
 	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_BLUE << "Swing first, think later!" << COLOR_RESET << std::endl;
@@ -76,6 +99,7 @@ void	ClapTrap::attack(const std::string& target) {
 	std::cout << "Claptrap " << _name << " attacks " << target << ", ";
 	std::cout << "causing " << _attackDamage <<  " points of damage!" << std::endl;
 }
+
 void	ClapTrap::takeDamage(unsigned int amount) {
 	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_RED << "I’m fine. Totally fine. Probably." << COLOR_RESET << std::endl;
@@ -87,6 +111,7 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 		std::cout << COLOR_RED << "Ouch!" << COLOR_RESET << std::endl;
 	}
 }
+
 void	ClapTrap::beRepaired(unsigned int amount) {
 	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_GREEN << "Magic fixes everything." << COLOR_RESET << std::endl;
