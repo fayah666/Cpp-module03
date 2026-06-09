@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:05:26 by hfandres          #+#    #+#             */
-/*   Updated: 2026/05/22 09:32:23 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:46:27 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,17 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& other) {
 	_attackDamage = other._attackDamage;
 	return (*this);
 }
+
+std::ostream& operator<<(std::ostream& os, ClapTrap& c)
+{
+	os << "{" << c.getName()
+		<< " : " << c.getHitPoints()
+		<< ", " << c.getEnergyPoints()
+		<< ", " << c.getAttackDamage()
+		<< "}";
+	return (os);
+}
+
 
 std::string	ClapTrap::getName(void) const {
 	return (this->_name);
