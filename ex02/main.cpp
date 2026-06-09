@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/05/22 18:12:21 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/09 20:09:57 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@
 #include <ctime>
 #include <cstdlib>
 
-static void	printStats(const ClapTrap& ct)
-{
-	std::cout << ct.getName()
-			<< " HP:     " << ct.getHitPoints()
-			<< " EP:     " << ct.getEnergyPoints()
-			<< " Attack: "<< ct.getAttackDamage() <<std::endl;
-}
-
 int main(void)
 {
 	int max_turn = 10;
@@ -33,8 +25,8 @@ int main(void)
 	alpha.setName("Alpha");
 	FragTrap omega("omega");
 	std::cout << "\n--- Initial Stats ---\n";
-	printStats(alpha);
-	printStats(omega);
+	std::cout << alpha << std::endl;
+	std::cout << omega << std::endl;
 	std::cout << "\n--- Fight Start ---\n";
 	std::srand(std::time(0));
 	for (int turn = 1; turn <= max_turn; turn++)
@@ -62,8 +54,8 @@ int main(void)
 				omega.takeDamage(alpha.getAttackDamage());
 			}
 		}
-		printStats(alpha);
-		printStats(omega);
+		std::cout << alpha << std::endl;
+		std::cout << omega << std::endl;
 		if (alpha.getHitPoints() <= 0 || omega.getHitPoints() <= 0)
 			break;
 	}
@@ -73,23 +65,23 @@ int main(void)
 		omega.highFivesGuys();
 	}
 	std::cout << "\n--- Final Stats ---\n";
-	printStats(alpha);
-	printStats(omega);
+	std::cout << alpha << std::endl;
+	std::cout << omega << std::endl;
 
 	std::cout << "\n--- Scope Destruction Test ---\n";
 	{
 		FragTrap temp("Temp");
-		printStats(temp);
+		std::cout << temp << std::endl;
 	}
 	std::cout << "\n--- Copy Constructor Test ---\n";
 	ClapTrap clone(omega);
-	std::cout << "Clone of " << alpha.getName()
-			<< " HP: " << clone.getHitPoints() << std::endl;
+	std::cout << "clone : " << clone << std::endl;
+	std::cout << "omega : " << omega << std::endl;
 	std::cout << "\n--- Assignment Operator Test ---\n";
 	FragTrap omegaClone("OmegaClone");
 	clone = omegaClone;
-	std::cout << "Clone now copied from " << omegaClone.getName()
-			<< " HP: " << clone.getHitPoints() << std::endl;
+	std::cout << "clone : " << clone << std::endl;
+	std::cout << "omegaClone : " << omegaClone << std::endl;
 	std::cout << "\n--- Edge Case Test ---\n";
 	omega.setHitPoints(0);
 	omega.attack("Ghost");

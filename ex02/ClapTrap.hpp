@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:00:04 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/09 19:06:01 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:59:08 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ class ClapTrap
 		void		takeDamage(unsigned int amount);
 		void		beRepaired(unsigned int amount);
 };
+
+std::ostream& operator<<(std::ostream& os, ClapTrap& c);
 
 #endif //CLAPTRAP_HPP
 
