@@ -6,25 +6,29 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 18:07:11 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/09 19:44:16 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/10 12:24:39 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) : ClapTrap()
+ScavTrap::ScavTrap(void) :
+ClapTrap()
 {
-	ClapTrap::setHitPoints(100);
-	ClapTrap::setEnergyPoints(50);
-	ClapTrap::setAttackDamage(20);
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 20;
+	_hitPointsMax = _hitPoints;
 	std::cout << COLOR_BLUE << "My love! Hero entry(ScavTrap)" << COLOR_RESET<< std::endl;
 }
 
-ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string& name) :
+ClapTrap(name)
 {
-	ClapTrap::setHitPoints(100);
-	ClapTrap::setEnergyPoints(50);
-	ClapTrap::setAttackDamage(20);
+	_hitPoints = 100;
+	_energyPoints = 50;
+	_attackDamage = 30;
+	_hitPointsMax = _hitPoints;
 	std::cout << COLOR_RED << "I'm " << getName() << " not serena (ScavTrap)" << COLOR_RESET << std::endl;
 }
 
@@ -48,13 +52,18 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 
 void	ScavTrap::attack(const std::string& target)
 {
+	if (_hitPoints <= 0)
+	{
+		std::cout << COLOR_RED << _name << "Ghost : " << COLOR_RESET << "ooouuuuuuuuuh!" << std::endl;
+		return ;
+	}
 	std::cout << COLOR_YELLOW << getName() << ": ";
 	std::cout << COLOR_BLUE << "Serena's hand!" << COLOR_RESET << std::endl;
-	setEnergyPoints(getEnergyPoints() - 1);
-	if (getEnergyPoints() <= 0 || getHitPoints() <= 0)
+	_energyPoints -= 1;
+	if (_energyPoints <= 0)
 	{
 		std::cout << COLOR_RED << "Battery low. Like, really low." << COLOR_RESET << std::endl;
-		setEnergyPoints(0);
+		_energyPoints = 0;
 		return ;
 	}
 	std::cout << "ScavTrap " << getName() << " attacks " << target << std::endl;
@@ -63,13 +72,18 @@ void	ScavTrap::attack(const std::string& target)
 
 void	ScavTrap::guardGate(void)
 {
+	if (_hitPoints <= 0)
+	{
+		std::cout << COLOR_RED << _name << "Ghost : " << COLOR_RESET << "ooouuuuuuuuuh!" << std::endl;
+		return ;
+	}
 	std::cout << COLOR_YELLOW << getName() << ": ";
 	std::cout << COLOR_BLUE << "Entering Gate keeper mode." << COLOR_RESET << std::endl;
-	setEnergyPoints(getEnergyPoints() - 1);
-	if (getEnergyPoints() <= 0 || getHitPoints() <= 0)
+	_energyPoints -= 1;
+	if (getEnergyPoints() <= 0)
 	{
 		std::cout << COLOR_RED << "Battery low. Like, really low." << COLOR_RESET << std::endl;
-		setEnergyPoints(0);
+		_energyPoints = 0;
 		return ;
 	}
 }

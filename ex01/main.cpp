@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/09 19:54:32 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/10 11:25:48 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int main(void)
 		std::cout << alpha << std::endl << beta << std::endl;
 		if (alpha.getHitPoints() <= 0 || beta.getHitPoints() <= 0)
 			break;
+		std::cout << "==================================" << std::endl;
 	}
 	std::cout << "\n--- Final Stats ---\n";
 	std::cout << alpha << std::endl << beta << std::endl;
