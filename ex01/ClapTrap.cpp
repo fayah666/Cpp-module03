@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:05:26 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/10 12:24:28 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/10 20:26:38 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,11 @@ void	ClapTrap::attack(const std::string& target)
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
+	if (_hitPoints <= 0)
+	{
+		std::cout << COLOR_RED << _name << "Ghost : " << COLOR_RESET << "ooouuuuuuuuuh!" << std::endl;
+		return ;
+	}
 	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_RED << "I’m fine. Totally fine. Probably." << COLOR_RESET << std::endl;
 	std::cout << "Claptrap " << _name << " takes " << amount << " points of damage!" << std::endl;
