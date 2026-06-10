@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/10 20:21:35 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/10 21:17:47 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,14 @@ int main(void)
 	std::cout << beta << std::endl;
 	beta.takeDamage(10);
 	std::cout << beta << std::endl;
-	alpha.setHitPoints(0);
-	alpha.attack("");
-	alpha.beRepaired(5);
-	alpha.takeDamage(5);
+	beta.setHitPoints(0);
+	beta.attack("Ghost");
+	beta.beRepaired(5);
+	beta.takeDamage(5);
+	beta.setHitPoints(10);
+	beta.setEnergyPoints(0);
+	beta.attack("Ghost");
+	beta.beRepaired(5);
+	beta.takeDamage(5);
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/10 12:32:36 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/10 21:19:48 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,17 @@ int main(void)
 		std::cout << omega << std::endl;
 		omega.highFivesGuys();
 		std::cout << omega << std::endl;
+		omega.setHitPoints(0);
+		omega.attack("Ghost");
+		omega.highFivesGuys();
+		omega.beRepaired(5);
+		omega.takeDamage(5);
+		omega.setHitPoints(10);
+		omega.setEnergyPoints(0);
+		omega.attack("Ghost");
+		omega.highFivesGuys();
+		omega.beRepaired(5);
+		omega.takeDamage(5);
 		std::cout << "\n---Simulation end.---\n";
 	}
 	return 0;
