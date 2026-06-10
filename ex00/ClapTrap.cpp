@@ -6,14 +6,15 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:05:26 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/09 19:37:36 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/10 11:15:48 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(void) :
-	_hitPoints(10), _energyPoints(10), _attackDamage(0) {
+	_hitPoints(10), _energyPoints(10), _attackDamage(0), _hitPointsMax(_hitPoints)
+{
 	std::cout << COLOR_YELLOW << _name << ": " ;
 	std::cout << COLOR_BLUE << "Spawning with style.(ClapTrap)" << COLOR_RESET << std::endl;
 }
@@ -24,7 +25,8 @@ ClapTrap::~ClapTrap() {
 }
 
 ClapTrap::ClapTrap(const std::string& name) :
-	_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
+	_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0), _hitPointsMax(_hitPoints)
+{
 	std::cout << COLOR_YELLOW << _name << ": ";
 	std::cout << COLOR_BLUE << "Showtime(ClapTrap)" << COLOR_RESET << std::endl;
 }
@@ -123,5 +125,8 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		return ;
 	}
 	std::cout << "Claptrap " << _name << " repairs itself for " << amount << " hit points!" << std::endl;
-	_hitPoints += amount;
+	if (_hitPoints >= _hitPointsMax)
+		_hitPoints = _hitPointsMax;
+	else
+		_hitPoints += amount;
 }

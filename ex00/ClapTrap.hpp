@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:00:04 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/09 19:19:55 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/10 11:05:59 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class ClapTrap
 		int			_hitPoints;
 		int			_energyPoints;
 		int			_attackDamage;
+		int			_hitPointsMax;
 	public :
 		ClapTrap(void);
 		ClapTrap(const std::string& name);
