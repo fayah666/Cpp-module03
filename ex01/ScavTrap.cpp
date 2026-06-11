@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 18:07:11 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/10 21:08:19 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/11 10:44:37 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ClapTrap(name)
 {
 	_hitPoints = 100;
 	_energyPoints = 50;
-	_attackDamage = 30;
+	_attackDamage = 20;
 	_hitPointsMax = _hitPoints;
 	std::cout << COLOR_RED << "I'm " << getName() << " not serena (ScavTrap)" << COLOR_RESET << std::endl;
 }
@@ -56,7 +56,7 @@ void	ScavTrap::attack(const std::string& target)
 	{
 		std::cout << COLOR_RED << _name << "Ghost : " << COLOR_RESET << "ooouuuuuuuuuh!" << std::endl;
 		return ;
-	} 
+	}
 	std::cout << COLOR_YELLOW << getName() << ": ";
 	std::cout << COLOR_BLUE << "Serena's hand!" << COLOR_RESET << std::endl;
 	_energyPoints -= 1;

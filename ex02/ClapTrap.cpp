@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:05:26 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/10 20:26:28 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/11 11:03:50 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	ClapTrap::setName(const std::string& name)
 void	ClapTrap::setHitPoints(const int hitpoints)
 {
 	this->_hitPoints = hitpoints;
+	this->_hitPointsMax = hitpoints;
 }
 
 void	ClapTrap::setEnergyPoints(const int energyPoints)
@@ -154,7 +155,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		return ;
 	}
 	std::cout << "Claptrap " << _name << " repairs itself for " << amount << " hit points!" << std::endl;
-	if (_hitPoints >= _hitPointsMax)
+	if (_hitPoints + amount >= (unsigned int)_hitPointsMax)
 		_hitPoints = _hitPointsMax;
 	else
 		_hitPoints += amount;

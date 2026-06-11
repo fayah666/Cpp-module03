@@ -6,7 +6,7 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/10 21:17:47 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/11 10:50:47 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,19 @@ int main(void)
 	for (int turn = 1; turn <= 5; turn++)
 	{
 		std::cout << "\n[TURN " << turn << "]\n";
-		if (alpha.getEnergyPoints() > 0 && alpha.getHitPoints() > 0)
-		{
-			alpha.attack(beta.getName());
+		alpha.attack(beta.getName());
+		if (alpha.getHitPoints() > 0 && alpha.getEnergyPoints() > 0)
 			beta.takeDamage(alpha.getAttackDamage());
-		}
-		if (beta.getHitPoints() > 0)
+		std::cout << "--------------------------------" << std::endl;
+		if (beta.getHitPoints() < 5 && beta.getEnergyPoints() > 0)
+			beta.beRepaired(3);
+		else
 		{
-			if (beta.getHitPoints() < 5 && beta.getEnergyPoints() > 0)
-				beta.beRepaired(3);
-			else if (beta.getEnergyPoints() > 0)
-			{
-				beta.attack(alpha.getName());
+			beta.attack(alpha.getName());
+			if (beta.getHitPoints() > 0 && beta.getEnergyPoints() > 0)
 				alpha.takeDamage(beta.getAttackDamage());
-			}
 		}
+		std::cout << "--------------------------------" << std::endl;
 		std::cout << alpha << std::endl << beta << std::endl;
 		if (alpha.getHitPoints() <= 0 || beta.getHitPoints() <= 0)
 			break;

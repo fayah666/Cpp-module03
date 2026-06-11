@@ -10,7 +10,7 @@ SRCS = main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = clapTrap
+NAME = scavTrap
 
 all : $(NAME)
 

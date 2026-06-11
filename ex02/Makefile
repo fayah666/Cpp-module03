@@ -11,7 +11,7 @@ SRCS = main.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-NAME = clapTrap
+NAME = fragTrap
 
 all : $(NAME)
 

@@ -6,12 +6,11 @@
 /*   By: hfandres <hfandres@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:25:39 by hfandres          #+#    #+#             */
-/*   Updated: 2026/06/10 21:19:48 by hfandres         ###   ########.fr       */
+/*   Updated: 2026/06/11 11:09:53 by hfandres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 #include <ctime>
@@ -41,6 +40,7 @@ int main(void)
 				omega.attack(alpha.getName());
 				if (omega.getEnergyPoints() > 0 && omega.getHitPoints() > 0)
 					alpha.takeDamage(omega.getAttackDamage());
+			std::cout << "----------------------------------" << std::endl;
 			}
 			else
 			{
@@ -48,6 +48,7 @@ int main(void)
 				if (alpha.getEnergyPoints() > 0 && alpha.getHitPoints() > 0)
 					omega.takeDamage(alpha.getAttackDamage());
 			}
+			std::cout << "----------------------------------" << std::endl;
 			std::cout << alpha << std::endl;
 			std::cout << omega << std::endl;
 			std::cout << "==================================\n" << std::endl;
@@ -78,26 +79,28 @@ int main(void)
 		std::cout << "\n--- Edge Case Test ---\n";
 		std::cout << omega << std::endl;
 		omega.beRepaired(1);
-		std::cout << omega << std::endl;
+		std::cout << "beRepaired : "<< omega << std::endl;
 		omega.setEnergyPoints(0);
-		std::cout << omega << std::endl;
+		std::cout << "setEnergyPoints : "<< omega << std::endl;
 		omega.highFivesGuys();
 		std::cout << omega << std::endl;
 		omega.setEnergyPoints(20);
-		std::cout << omega << std::endl;
+		std::cout << "setEnergyPoints : "<< omega << std::endl;
 		omega.setHitPoints(0);
-		std::cout << omega << std::endl;
+		std::cout << "setHitPoints : "<< omega << std::endl;
 		omega.attack("Ghost");
 		std::cout << omega << std::endl;
 		omega.highFivesGuys();
-		std::cout << omega << std::endl;
 		omega.setHitPoints(0);
+		std::cout << "setHitPoints : " << omega << std::endl;
 		omega.attack("Ghost");
 		omega.highFivesGuys();
 		omega.beRepaired(5);
 		omega.takeDamage(5);
 		omega.setHitPoints(10);
+		std::cout << "setHitPoints : " << omega << std::endl;
 		omega.setEnergyPoints(0);
+		std::cout << "setEnergyPoints : " << omega << std::endl;
 		omega.attack("Ghost");
 		omega.highFivesGuys();
 		omega.beRepaired(5);
